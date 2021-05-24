@@ -2,8 +2,8 @@ package br.com.zup.registra
 
 
 
-enum class TipoConta(val tipoConta: TipoConta) {
+enum class TipoConta(val tipoContaGrpc: br.com.zup.TipoConta) {
 
-    CONTA_CORRENTE(TipoConta.CONTA_CORRENTE),
-    CONTA_POUPANCA(TipoConta.CONTA_POUPANCA)
+    CONTA_CORRENTE(br.com.zup.TipoConta.CONTA_CORRENTE),
+    CONTA_POUPANCA(br.com.zup.TipoConta.CONTA_POUPANCA)
 }

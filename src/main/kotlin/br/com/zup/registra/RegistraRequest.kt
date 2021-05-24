@@ -1,13 +1,25 @@
 package br.com.zup.registra
 
-import br.com.zup.TipoChave
-import br.com.zup.TipoConta
+import br.com.zup.PixRequest
 import br.com.zup.TipoPessoa
+import java.util.*
+import javax.validation.constraints.NotNull
+import javax.validation.constraints.Size
 
 class RegistraRequest(
-    val clienteId: String,
-    val tipoConta: TipoConta,
-    val tipoChave: TipoChave,
-    val chave: String,
-    val tipoPessoa: TipoPessoa) {
+    @field: NotNull val tipoConta: TipoConta?,
+    @field: NotNull val tipoChave: TipoChave?,
+    @field: Size(max = 77) val chave: String?) {
+
+
+
+    fun toGrpc(clienteId: UUID): PixRequest{
+        return PixRequest.newBuilder()
+            .setId(clienteId.toString())
+            .setTipoConta(tipoConta?.tipoContaGrpc ?: br.com.zup.TipoConta.CONTA_DEFAULT)
+            .setTipoChave(tipoChave?.tipoChaveGrpc ?: br.com.zup.TipoChave.CHAVE_DEFAULT)
+            .setTipoPessoa(TipoPessoa.NATURAL_PERSON)
+            .setChave(chave ?: "")
+            .build()
+    }
 }
