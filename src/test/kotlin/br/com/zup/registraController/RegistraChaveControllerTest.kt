@@ -1,4 +1,4 @@
-package br.com.zup.controller
+package br.com.zup.registraController
 
 import br.com.zup.PixKeymanagerRegistraGrpcServiceGrpc
 import br.com.zup.PixResponse

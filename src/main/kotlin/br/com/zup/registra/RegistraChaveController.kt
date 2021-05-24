@@ -24,9 +24,6 @@ class RegistraChaveController(val grpcClient: PixKeymanagerRegistraGrpcServiceGr
 
         val request = registraRequest.toGrpc(clienteId)
 
-
-        println(request.chave)
-
         val response = grpcClient.adicionar(request)
 
         return HttpResponse.created(HttpResponse.uri("/registra/chaves/$clienteId/${response.id}"))
