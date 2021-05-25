@@ -11,3 +11,8 @@ grpc:
   channels:
     keyManagerGrpc:
       address: 'localhost:50051'
+
+
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false

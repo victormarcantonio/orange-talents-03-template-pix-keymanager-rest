@@ -52,7 +52,7 @@ class RemoveChaveControllerTest {
 
 
         assertEquals(HttpStatus.OK, response.status)
-        
+
     }
 
 
