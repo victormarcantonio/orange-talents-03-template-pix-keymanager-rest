@@ -9,13 +9,15 @@ import io.micronaut.http.annotation.Get
 import io.micronaut.validation.Validated
 import java.util.*
 import javax.validation.Valid
+import javax.validation.constraints.NotBlank
+import javax.validation.constraints.NotNull
 
 @Validated
 @Controller("/detalhe")
 class DetalheChaveController(val grpcClient: PixKeyManagerConsultaServiceGrpc.PixKeyManagerConsultaServiceBlockingStub) {
 
     @Get("/chaves/{pixId}/{clienteId}")
-    fun detalhe(pixId: UUID, clienteId: UUID): HttpResponse<Any>{
+    fun detalhe(@NotNull pixId: UUID, @NotNull clienteId: UUID): HttpResponse<Any>{
         val request = ConsultaPixRequest
             .newBuilder()
             .setPixId(
